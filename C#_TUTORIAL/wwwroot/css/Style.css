@@ -1,0 +1,245 @@
+ *
+ {
+     margin:0;
+     padding: 0;
+     list-style:none;
+     text-decoration: none;
+ }
+ .Main_Container
+ {
+    position: relative;
+ }
+.Sidebar
+{
+     position: fixed;
+     left: 0px;
+     width: 250px;
+     height: auto;
+     top: auto;
+     border-top: black;
+     box-sizing: 5px;
+     background-color: black;
+     color: black;
+    height:624px;
+    width:300px;
+    background-image: linear-gradient(to left,#f0f0f5 ,#e0e0eb ,#d1d1e0 ,#c2c2d6 ,#b3b3cc );
+}
+/* @media(max-width:720px) {
+    .Sidebar
+    {
+        height: auto;
+        flex-direction: row;
+    }
+    
+} */
+.Sidebar ul a
+{
+    display: block;
+    font-size: 25px;
+    padding-left: 15px;
+    text-align: left;
+    text-decoration: none;
+    border-top: 1px rgba(255,255, 255, .1);
+    color: black;
+    height: 60px;
+}
+.side_Scroll
+{
+    overflow-y:scroll;
+    height:624px;
+    width:300px;
+}
+.Search
+{
+    height:50px;
+}
+nav ul li a
+{
+   font-size: 1.15em;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color:#eeeeeb;
+    padding: 10px 30px;
+    height: 30px;
+    width: 100px;
+    transition: .5s ease;
+}
+nav ul li a:hover
+{
+    background: rgba(0,0, 0, .10);
+    width: auto;
+}
+nav ul ul
+{
+    position: absolute;
+    left: 250px;
+    width: 350px;
+    top:0px;
+    display: none;
+    left:150px;
+    background-color: aquamarine;
+}
+nav ul .dropdown
+{
+    position: relative;
+}
+nav ul .dropdown:hover ul
+{
+    display: initial;
+    font-size: small;
+}
+.Header
+{   
+    height:80px;
+    width: 1535px;
+    background-image: linear-gradient(to right,#f0f0f5 ,#e0e0eb ,#d1d1e0 ,#c2c2d6 ,#b3b3cc );
+    text-align: center;
+    border-top: black;
+    box-sizing: 5px;
+    border-bottom: black;
+    padding-top: 10px;
+    padding-left: 584px;
+    
+}
+.SearchBar
+{
+    text-align: center;
+    width: 270px;
+    border-radius: 10px;
+    height: 50px;
+    font-size: 20px;
+    margin-left: 10px;
+}
+.Content
+{
+    position: fixed;
+    left: 0px;
+    width: auto;
+    height: 600px;
+    top: auto;
+    box-sizing: 5px;
+    margin-left: 300px;
+    background-image: linear-gradient(to right, #f0f0f5 ,#e0e0eb ,#f0f0f5 );
+    overflow-y:scroll;
+    height:630px;
+    width:1235px;
+    font-size: 20px;
+
+}
+.con
+{
+    position: fixed;
+    left: 0px;
+    width: auto;
+    height: 625px;
+    top: auto;
+    box-sizing: 5px;
+    margin-left: 300px;
+    background-image: linear-gradient(to right, #f0f0f5 ,#e0e0eb ,#f0f0f5 );
+    padding-top: 150px;
+    height:630px;
+    width:1235px;
+    font-size: 20px;
+}
+.Pargraph
+{
+    margin-left: 50px;
+}
+.Footer
+{
+    height: 62px;
+    width: 1535px;
+    background-image: linear-gradient(to right,#f0f0f5 ,#e0e0eb ,#d1d1e0 ,#c2c2d6 ,#b3b3cc ,#a3a3c2);
+    text-align: center;
+    border-top: black;
+    box-sizing: 5px;
+    margin-top: 10px; 
+
+}
+.ftr
+{
+    margin-top: 17px;
+    color: black;
+}
+img 
+{
+    border: black;
+    height: 50px;
+}
+.login
+{
+    margin-right: -490px;
+    border-radius: 10px;
+}
+.title
+{
+    padding-right: 600px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.logo
+{
+    margin-left: -1080px;
+    margin-right: 540px;
+    height: 80px;
+    margin-top:-10px;
+    border-radius: 10px;
+}
+.padding
+{
+    padding-left: 80px;
+    padding-right: 80px;
+    
+}
+#login
+{
+    padding-top: 60px;
+    padding-bottom: 100px;
+}
+label{  
+    color: black;  
+    font-size: 17px;  
+} 
+#button{  
+    /* width: 300px;   */
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-bottom: 10px;
+    padding-left: 15px;
+    margin-top: 25px;  
+    color: black;  
+    background-image: linear-gradient(to right,#f0f0f5 ,#e0e0eb ,#d1d1e0 ,#d1d1e0 ,#c2c2d6 ,#b3b3cc ,#a3a3c2);
+}
+.login_table
+{
+     
+        padding-bottom: 10px;
+         width: 382px;  
+         height: 400px;
+        overflow: hidden; 
+        margin-left: 450px; 
+        margin-top: 100px;  
+        background-image: linear-gradient(to right,#f0f0f5 ,#e0e0eb ,#d1d1e0 ,#d1d1e0 ,#c2c2d6 ,#b3b3cc ,#a3a3c2);        /* background: #fce9fa;   */
+        border-radius: 15px ;  
+          
+    
+}
+.registration_table
+{
+    padding-bottom: 10px;
+    width: 500px;  
+    height: 600px;
+   overflow: hidden; 
+   margin-left: 380px; 
+   margin-top: 5px;
+   margin-bottom: 5px;  
+   background-image: linear-gradient(to right,#f0f0f5 ,#e0e0eb ,#d1d1e0 ,#d1d1e0 ,#c2c2d6 ,#b3b3cc ,#a3a3c2);        /* background: #fce9fa;   */
+   border-radius: 15px ;  
+   padding-left: 60px;
+}   
+#txtbox
+{
+    border-radius: 10px;
+    margin-top:8px;
+}

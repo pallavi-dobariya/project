@@ -1,0 +1,151 @@
+@page
+@model Top_Level_Stat
+@{
+    ViewData["Title"] = "Top Level Statement";
+}
+<html>
+    <head>
+        <title>c# tutorial</title>
+        <link rel="stylesheet" href="~/css/Style.css" />
+        <script>
+            const Serach_Menu = () =>{
+                let filter = document.getElementById('Search').value.toUpperCase();
+                let ul = document.getElementById('Search_ul');
+                let li = ul.getElementsByTagName('li');
+                for(var i=0;i<li.length;i++)
+                {
+                    let a = li[i].getElementsByTagName('a')[0];
+                    let txtvalue = a.textContent || a.innerHTML;
+                    if(txtvalue.toUpperCase().indexOf(filter) > -1)
+                    {
+                        li[i].style.display = '';
+                    }
+                    else
+                    {
+                        li[i].style.display = 'none';
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="Sidebar">
+            <div class="Search">
+            <input type="text" class="SearchBar"placeholder="Type Here For Search" id="Search" onkeyup="Serach_Menu()">
+            </div>
+            <div class="side_Scroll">
+            <ul id="Search_ul">
+                <li><a  href="~/Tutorial/Introduction"><i></i>Introduction</a></li>
+                <li><a  href="~/Tutorial/Top_Level_Stat"><i></i>Top&nbsp;Level&nbsp;Statement</a></li>
+                <li><a  href="~/Tutorial/Namespaces"><i></i>Namespaces</a></li>
+                <li><a  href="~/Tutorial/Classes"><i></i>Classes</a></li>
+                <li><a  href="~/Tutorial/Records"><i></i>Records</a></li>
+                <li><a  href="~/Tutorial/Interfaces"><i></i>Interfaces</a></li>
+                <li><a  href="~/Tutorial/Generic"><i></i>Generic</a></li>
+                <li><a  href="~/Tutorial/Anonymous"><i></i>Anonymous</a></li>
+                <li><a  href="~/Tutorial/Class_Struct_Record"><i></i>Classes&nbsp;Structs&nbsp;Records</a></li>
+                <li><a  href="~/Tutorial/Objects"><i></i>Objects</a></li>
+                <li><a  href="~/Tutorial/Inheritance"><i></i>Inheritance</a></li>
+                <li><a  href="~/Tutorial/Polymorphism"><i></i>Polymorphism</a></li>
+                <li><a  href="~/Tutorial/Pattern_Matching"><i></i>Pattern Matching</a></li>
+                <li><a  href="~/Tutorial/Discards"><i></i>Discards</a></li>
+                <li><a  href="~/Tutorial/Exception_Over"><i></i>Exception Overview</a></li>
+                <li><a  href="~/Tutorial/Exception_Use"><i></i>Use Exception</a></li>
+             <li><a  href="~/Tutorial/Exception_Create_Throw">Creating&nbsp;&&nbsp;Throwing&nbsp;Exception</a></li>
+                <li><a  href="~/Tutorial/Exception_Compiler">Compiler&nbsp;generated&nbsp;Exceptions</a></li><br>
+                
+
+
+            </ul>
+            </div>
+        </div>
+
+        <div class="Content">
+        <p class="padding">
+        <h2>
+            Top Level Statement
+        </h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Starting in C# 9, you don't have to explicitly include a Main method in a console application project. Instead, you can use the top-level statements feature to minimize the code you have to write. In this case, the compiler generates a class and Main method entry point for the application.<br><br>
+        <h2>
+            Only one top-level file
+        </h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An application must have only one entry point. A project can have only one file with top-level statements. Putting top-level statements in more than one file in a project results in the following compiler error:<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CS8802 Only one compilation unit can have top-level statements.<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A project can have any number of additional source code files that don't have top-level statements.<br><br>
+        <h2>
+            No other entry points
+        </h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can write a Main method explicitly, but it can't function as an entry point. The compiler issues the following warning:<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CS7022 The entry point of the program is global code; ignoring 'Main()' entry point.<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In a project with top-level statements, you can't use the -main compiler option to select the entry point, even if the project has one or more Main methods.<br><br>
+        <h2>
+            Namespaces and type definitions
+        </h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A file with top-level statements can also contain namespaces and type definitions, but they must come after the top-level statements. For example:<br><br>
+        <h2>
+            Example
+        </h2>
+        <iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/6z7G5u" frameborder="0"></iframe>
+        <h2>
+            args
+        </h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Top-level statements can reference the args variable to access any command-line arguments that were entered. The args variable is never null but its Length is zero if no command-line arguments were provided. For example:<br><br>
+        <iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/wkindI" frameborder="0"></iframe>
+        <h2>
+            await
+        </h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can call an async method by using await. For example:<br><br>
+        <h2>
+            Exit code for the process
+        </h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To return an int value when the application ends, use the return statement as you would in a Main method that returns an int. For example:<br><br>
+        <h2>
+            Implicit entry point method
+        </h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The compiler generates a method to serve as the program entry point for a project with top-level statements. The name of this method isn't actually Main, it's an implementation detail that your code can't reference directly. The signature of the method depends on whether the top-level statements contain the await keyword or the return statement. The following table shows what the method signature would look like, using the method name Main in the table for convenience.<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<table border="3">
+            <tr>
+                <td>
+                    <h4>Top-level code contains</h4>
+                </td>
+                <td>
+                    <h4>Implicit Main signature</h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    await and return
+                </td>
+                <td>
+                    static async Task<int> Main(string[] args)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    await
+                </td>
+                <td>
+                    static async Task Main(string[] args)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    return
+                </td>
+                <td>
+                    static int Main(string[] args)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    No await or return
+                </td>
+                <td>
+                    static void Main(string[] args)
+                </td>
+            </tr>
+        </table>
+        </p>
+</div>
+    </body>
+</html>

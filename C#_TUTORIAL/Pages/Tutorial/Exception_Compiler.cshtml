@@ -1,0 +1,158 @@
+@page
+	@model Exception_Compiler
+	@{
+		ViewData["Title"] = "Compiler-generated exceptions";
+	}
+<html>
+    <head>
+        <title>c# tutorial</title>
+        <link rel="stylesheet" href="~/css/Style.css" />
+        <script>
+            const Serach_Menu = () =>{
+                let filter = document.getElementById('Search').value.toUpperCase();
+                let ul = document.getElementById('Search_ul');
+                let li = ul.getElementsByTagName('li');
+                for(var i=0;i<li.length;i++)
+                {
+                    let a = li[i].getElementsByTagName('a')[0];
+                    let txtvalue = a.textContent || a.innerHTML;
+                    if(txtvalue.toUpperCase().indexOf(filter) > -1)
+                    {
+                        li[i].style.display = '';
+                    }
+                    else
+                    {
+                        li[i].style.display = 'none';
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="Sidebar">
+            <div class="Search">
+            <input type="text" class="SearchBar"placeholder="Type Here For Search" id="Search" onkeyup="Serach_Menu()">
+            </div>
+            <div class="side_Scroll">
+            <ul id="Search_ul">
+                <li><a  href="~/Tutorial/Introduction"><i></i>Introduction</a></li>
+                <li><a  href="~/Tutorial/Top_Level_Stat"><i></i>Top&nbsp;Level&nbsp;Statement</a></li>
+                <li><a  href="~/Tutorial/Namespaces"><i></i>Namespaces</a></li>
+                <li><a  href="~/Tutorial/Classes"><i></i>Classes</a></li>
+                <li><a  href="~/Tutorial/Records"><i></i>Records</a></li>
+                <li><a  href="~/Tutorial/Interfaces"><i></i>Interfaces</a></li>
+                <li><a  href="~/Tutorial/Generic"><i></i>Generic</a></li>
+                <li><a  href="~/Tutorial/Anonymous"><i></i>Anonymous</a></li>
+                <li><a  href="~/Tutorial/Class_Struct_Record"><i></i>Classes&nbsp;Structs&nbsp;Records</a></li>
+                <li><a  href="~/Tutorial/Objects"><i></i>Objects</a></li>
+                <li><a  href="~/Tutorial/Inheritance"><i></i>Inheritance</a></li>
+                <li><a  href="~/Tutorial/Polymorphism"><i></i>Polymorphism</a></li>
+                <li><a  href="~/Tutorial/Pattern_Matching"><i></i>Pattern Matching</a></li>
+                <li><a  href="~/Tutorial/Discards"><i></i>Discards</a></li>
+                <li><a  href="~/Tutorial/Exception_Over"><i></i>Exception Overview</a></li>
+                <li><a  href="~/Tutorial/Exception_Use"><i></i>Use Exception</a></li>
+                  <li><a  href="~/Tutorial/Exception_Create_Throw">Creating&nbsp;&&nbsp;Throwing&nbsp;Exception</a></li>
+                <li><a  href="~/Tutorial/Exception_Compiler">Compiler&nbsp;generated&nbsp;Exceptions</a></li><br>
+            </ul>
+            </div>
+        </div>
+			<div class="Content">
+			<p class="padding">
+			<h2>
+				   Compiler-generated exceptions
+			</h2>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Some exceptions are thrown automatically by the .NET runtime when basic operations fail. These exceptions and their error conditions are listed in the following table.<br><br><br><br>
+            <table border="3">
+                <tr>
+                    <td>
+                        <h3>Exception</h3>
+                    </td>
+                    <td>
+                        <h3>Description</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        ArithmeticException
+                    </td>
+                    <td>
+                        A base class for exceptions that occur during arithmetic operations, such as DivideByZeroException and OverflowException.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        ArrayTypeMismatchException	
+                    </td>
+                    <td>
+                        Thrown when an array can't store a given element because the actual type of the element is incompatible with the actual type of the array.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        DivideByZeroException
+                    </td>
+                    <td>
+                        Thrown when an attempt is made to divide an integral value by zero.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        IndexOutOfRangeException
+                    </td>
+                    <td>
+                        	Thrown when an attempt is made to index an array when the index is less than zero or outside the bounds of the array.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        InvalidCastException
+                    </td>
+                    <td>
+                        Thrown when an explicit conversion from a base type to an interface or to a derived type fails at run time.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        NullReferenceException
+                    </td>
+                    <td>
+                        Thrown when an attempt is made to reference an object whose value is null.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        OutOfMemoryException
+                    </td>
+                    <td>
+                        	Thrown when an attempt to allocate memory using the new operator fails. This exception indicates that the memory available to the common language runtime has been exhausted.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        OverflowException
+                    </td>
+                    <td>
+                        Thrown when an arithmetic operation in a checked context overflows.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        StackOverflowException
+                    </td>
+                    <td>
+                        Thrown when the execution stack is exhausted by having too many pending method calls; usually indicates a very deep or infinite recursion.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        TypeInitializationException
+                    </td>
+                    <td>
+                        Thrown when a static constructor throws an exception and no compatible catch clause exists to catch it.
+                    </td>
+                </tr>
+            </table>
+			</p>
+	</div>
+		</body>
+	</html>

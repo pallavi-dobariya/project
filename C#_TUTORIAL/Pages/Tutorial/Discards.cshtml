@@ -1,0 +1,130 @@
+@page
+@model Discards
+@{
+    ViewData["Title"] = "Discards";
+}
+<html>
+    <head>
+        <title>c# tutorial</title>
+        <link rel="stylesheet" href="~/css/Style.css" />
+        <script>
+            const Serach_Menu = () =>{
+                let filter = document.getElementById('Search').value.toUpperCase();
+                let ul = document.getElementById('Search_ul');
+                let li = ul.getElementsByTagName('li');
+                for(var i=0;i<li.length;i++)
+                {
+                    let a = li[i].getElementsByTagName('a')[0];
+                    let txtvalue = a.textContent || a.innerHTML;
+                    if(txtvalue.toUpperCase().indexOf(filter) > -1)
+                    {
+                        li[i].style.display = '';
+                    }
+                    else
+                    {
+                        li[i].style.display = 'none';
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="Sidebar">
+            <div class="Search">
+            <input type="text" class="SearchBar"placeholder="Type Here For Search" id="Search" onkeyup="Serach_Menu()">
+            </div>
+            <div class="side_Scroll">
+            <ul id="Search_ul">
+                <li><a  href="~/Tutorial/Introduction"><i></i>Introduction</a></li>
+                <li><a  href="~/Tutorial/Top_Level_Stat"><i></i>Top&nbsp;Level&nbsp;Statement</a></li>
+                <li><a  href="~/Tutorial/Namespaces"><i></i>Namespaces</a></li>
+                <li><a  href="~/Tutorial/Classes"><i></i>Classes</a></li>
+                <li><a  href="~/Tutorial/Records"><i></i>Records</a></li>
+                <li><a  href="~/Tutorial/Interfaces"><i></i>Interfaces</a></li>
+                <li><a  href="~/Tutorial/Generic"><i></i>Generic</a></li>
+                <li><a  href="~/Tutorial/Anonymous"><i></i>Anonymous</a></li>
+                <li><a  href="~/Tutorial/Class_Struct_Record"><i></i>Classes&nbsp;Structs&nbsp;Records</a></li>
+                <li><a  href="~/Tutorial/Objects"><i></i>Objects</a></li>
+                <li><a  href="~/Tutorial/Inheritance"><i></i>Inheritance</a></li>
+                <li><a  href="~/Tutorial/Polymorphism"><i></i>Polymorphism</a></li>
+                <li><a  href="~/Tutorial/Pattern_Matching"><i></i>Pattern Matching</a></li>
+                <li><a  href="~/Tutorial/Discards"><i></i>Discards</a></li>
+                <li><a  href="~/Tutorial/Exception_Over"><i></i>Exception Overview</a></li>
+                <li><a  href="~/Tutorial/Exception_Use"><i></i>Use Exception</a></li>
+                  <li><a  href="~/Tutorial/Exception_Create_Throw">Creating&nbsp;&&nbsp;Throwing&nbsp;Exception</a></li>
+                <li><a  href="~/Tutorial/Exception_Compiler">Compiler&nbsp;generated&nbsp;Exceptions</a></li><br>
+            </ul>
+            </div>
+        </div>
+        <div class="Content">
+        <p class="padding">
+        <h2>
+               Discards
+        </h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Starting with C# 7.0, C# supports discards, which are placeholder variables that are intentionally unused in application code. Discards are equivalent to unassigned variables; they don't have a value. A discard communicates intent to the compiler and others that read your code: You intended to ignore the result of an expression. You may want to ignore the result of an expression, one or more members of a tuple expression, an out parameter to a method, or the target of a pattern matching expression.<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Discards make the intent of your code clear. A discard indicates that our code never uses the variable. They enhance its readability and maintainability.<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You indicate that a variable is a discard by assigning it the underscore (_) as its name. For example, the following method call returns a tuple in which the first and second values are discards. area is a previously declared variable set to the third component returned by GetCityInformation: (_, _, area) = city.GetCityInformation(cityName);<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When _ is a valid discard, attempting to retrieve its value or use it in an assignment operation generates compiler error CS0301, "The name '_' doesn't exist in the current context". This error is because _ isn't assigned a value, and may not even be assigned a storage location. If it were an actual variable, you couldn't discard more than one value, as the previous example did.<br><br>
+        <h2>
+            Tuple and object deconstruction
+        </h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Discards are useful in working with tuples when your application code uses some tuple elements but ignores others. For example, the following QueryCityDataForYears method returns a tuple with the name of a city, its area, a year, the city's population for that year, a second year, and the city's population for that second year. The example shows the change in population between those two years. Of the data available from the tuple, we're unconcerned with the city area, and we know the city name and the two dates at design-time. As a result, we're only interested in the two population values stored in the tuple, and can handle its remaining values as discards.<br><br>
+        <iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/hR7fxM" frameborder="0"></iframe><br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Deconstruct method of a class, structure, or interface also allows you to retrieve and deconstruct a specific set of data from an object. You can use discards when you're interested in working with only a subset of the deconstructed values. The following example deconstructs a Person object into four strings (the first and last names, the city, and the state), but discards the last name and the state.<br><br>
+        <iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/pqP0nh" frameborder="0"></iframe><br><br>
+        <h2>
+            Pattern matching with switch
+        </h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The discard pattern can be used in pattern matching with the switch expression. Every expression, including null, always matches the discard pattern.<br><br>
+        <iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/PoTpKj" frameborder="0"></iframe><br><br>
+        <h2>
+            Calls to methods with out parameters
+        </h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When calling the Deconstruct method to deconstruct a user-defined type (an instance of a class, structure, or interface), you can discard the values of individual out arguments. But you can also discard the value of out arguments when calling any method with an out parameter.<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following example calls the DateTime.TryParse(String, out DateTime) method to determine whether the string representation of a date is valid in the current culture. Because the example is concerned only with validating the date string and not with parsing it to extract the date, the out argument to the method is a discard.<br><br>
+        <iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/5L4JS5" frameborder="0"></iframe><br><br>
+        <h2>
+            A standalone discard
+        </h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can use a standalone discard to indicate any variable that you choose to ignore. One typical use is to use an assignment to ensure that an argument isn't null. The following code uses a discard to force an assignment. The right side of the assignment uses the null coalescing operator to throw an System.ArgumentNullException when the argument is null. The code doesn't need the result of the assignment, so it's discarded. The expression forces a null check. The discard clarifies your intent: the result of the assignment isn't needed or used.<br><br>
+        <iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/aKccKL" frameborder="0"></iframe><br><br>
+        <h2>
+            Tuples
+        </h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C# features built-in support for deconstructing tuples, which lets you unpackage all the items in a tuple in a single operation. The general syntax for deconstructing a tuple is similar to the syntax for defining one: you enclose the variables to which each element is to be assigned in parentheses in the left side of an assignment statement. For example, the following statement assigns the elements of a four-tuple to four separate variables:<br><br>
+        <iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/rFjZ1w" frameborder="0"></iframe><br><br>
+        <h2>
+            Tuple elements with discards
+        </h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Often when deconstructing a tuple, you're interested in the values of only some elements. Starting with C# 7.0, you can take advantage of C#'s support for discards, which are write-only variables whose values you've chosen to ignore. A discard is chosen by an underscore character ("_") in an assignment. You can discard as many values as you like; all are represented by the single discard, _.<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following example illustrates the use of tuples with discards. The QueryCityDataForYears method returns a six-tuple with the name of a city, its area, a year, the city's population for that year, a second year, and the city's population for that second year. The example shows the change in population between those two years. Of the data available from the tuple, we're unconcerned with the city area, and we know the city name and the two dates at design-time. As a result, we're only interested in the two population values stored in the tuple, and can handle its remaining values as discards.<br><br>
+        <iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/lBwxev" frameborder="0"></iframe><br><br>
+        <h2>
+            User-defined types
+        </h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C# doesn't offer built-in support for deconstructing non-tuple types other than the record and DictionaryEntry types. However, as the author of a class, a struct, or an interface, you can allow instances of the type to be deconstructed by implementing one or more Deconstruct methods. The method returns void, and each value to be deconstructed is indicated by an out parameter in the method signature. For example, the following Deconstruct method of a Person class returns the first, middle, and last name:<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public void Deconstruct(out string fname, out string mname, out string lname)<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can then deconstruct an instance of the Person class named p with an assignment like the following code:<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var (fName, mName, lName) = p;<br><br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following example overloads the Deconstruct method to return various combinations of properties of a Person object. Individual overloads return:<br><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- A first and last name.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- A first, middle, and last name.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- A first name, a last name, a city name, and a state name. <br><br>
+<iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/8XVRYJ" frameborder="0"></iframe><br><br>
+<h2>
+    User-defined type with discards
+</h2>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Just as you do with tuples, you can use discards to ignore selected items returned by a Deconstruct method. Each discard is defined by a variable named "_", and a single deconstruction operation can include multiple discards.<br><br>
+<iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/vdhVBo" frameborder="0"></iframe><br><br>
+<h2>
+    Extension methods for user-defined types
+</h2>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If you didn't author a class, struct, or interface, you can still deconstruct objects of that type by implementing one or more Deconstruct extension methods to return the values in which you're interested.<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following example defines two Deconstruct extension methods for the System.Reflection.PropertyInfo class. The first returns a set of values that indicate the characteristics of the property, including its type, whether it's static or instance, whether it's read-only, and whether it's indexed. The second indicates the property's accessibility. Because the accessibility of get and set accessors can differ, Boolean values indicate whether the property has separate get and set accessors and, if it does, whether they have the same accessibility. If there's only one accessor or both the get and the set accessor have the same accessibility, the access variable indicates the accessibility of the property as a whole. Otherwise, the accessibility of the get and set accessors are indicated by the getAccess and setAccess variables.<br><br>
+<iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/DpdLqB" frameborder="0"></iframe><br><br>
+
+        </p>
+</div>
+    </body>
+</html>

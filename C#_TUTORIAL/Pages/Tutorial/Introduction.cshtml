@@ -1,0 +1,72 @@
+@page
+@model Introduction
+@{
+    ViewData["Title"] = "Introduction";
+}
+<html>
+    <head>
+        <title>c# tutorial</title>
+        <link rel="stylesheet" href="~/css/Style.css" />
+        <script>
+            const Serach_Menu = () =>{
+                let filter = document.getElementById('Search').value.toUpperCase();
+                let ul = document.getElementById('Search_ul');
+                let li = ul.getElementsByTagName('li');
+                for(var i=0;i<li.length;i++)
+                {
+                    let a = li[i].getElementsByTagName('a')[0];
+                    let txtvalue = a.textContent || a.innerHTML;
+                    if(txtvalue.toUpperCase().indexOf(filter) > -1)
+                    {
+                        li[i].style.display = '';
+                    }
+                    else
+                    {
+                        li[i].style.display = 'none';
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="Sidebar">
+            <div class="Search">
+            <input type="text" class="SearchBar"placeholder="Type Here For Search" id="Search" onkeyup="Serach_Menu()">
+            </div>
+            <div class="side_Scroll">
+            <ul id="Search_ul">
+                <li><a  href="~/Tutorial/Introduction"><i></i>Introduction</a></li>
+                <li><a  href="~/Tutorial/Top_Level_Stat"><i></i>Top&nbsp;Level&nbsp;Statement</a></li>
+                <li><a  href="~/Tutorial/Namespaces"><i></i>Namespaces</a></li>
+                <li><a  href="~/Tutorial/Classes"><i></i>Classes</a></li>
+                <li><a  href="~/Tutorial/Records"><i></i>Records</a></li>
+                <li><a  href="~/Tutorial/Interfaces"><i></i>Interfaces</a></li>
+                <li><a  href="~/Tutorial/Generic"><i></i>Generic</a></li>
+                <li><a  href="~/Tutorial/Anonymous"><i></i>Anonymous</a></li>
+                <li><a  href="~/Tutorial/Class_Struct_Record"><i></i>Classes&nbsp;Structs&nbsp;Records</a></li>
+                <li><a  href="~/Tutorial/Objects"><i></i>Objects</a></li>
+                <li><a  href="~/Tutorial/Inheritance"><i></i>Inheritance</a></li>
+                <li><a  href="~/Tutorial/Polymorphism"><i></i>Polymorphism</a></li>
+                <li><a  href="~/Tutorial/Pattern_Matching"><i></i>Pattern Matching</a></li>
+                <li><a  href="~/Tutorial/Discards"><i></i>Discards</a></li>
+                <li><a  href="~/Tutorial/Exception_Over"><i></i>Exception Overview</a></li>
+                <li><a  href="~/Tutorial/Exception_Use"><i></i>Use Exception</a></li>
+                <li><a  href="~/Tutorial/Exception_Create_Throw">Creating&nbsp;&&nbsp;Throwing&nbsp;Exception</a></li>
+                <li><a  href="~/Tutorial/Exception_Compiler">Compiler&nbsp;generated&nbsp;Exceptions</a></li><br>
+            </ul>
+            </div>
+        </div>
+        <div class="Content">
+        <p class="padding">
+        <h2>
+            Introduction
+        </h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C# (pronounced "See Sharp") is a modern, object-oriented, and type-safe programming language. C# enables developers to build many types of secure and robust applications that run in .NET. C# has its roots in the C family of languages and will be immediately familiar to C, C++, Java, and JavaScript programmers. This tour provides an overview of the major components of the language in C# 8 and earlier. If you want to explore the language through interactive examples, try the introduction to C# tutorials.<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C# is an object-oriented, component-oriented programming language. C# provides language constructs to directly support these concepts, making C# a natural language in which to create and use software components. Since its origin, C# has added features to support new workloads and emerging software design practices. At its core, C# is an object-oriented language. You define types and their behavior.<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Several C# features help create robust and durable applications. Garbage collection automatically reclaims memory occupied by unreachable unused objects. Nullable types guard against variables that don't refer to allocated objects. Exception handling provides a structured and extensible approach to error detection and recovery. Lambda expressions support functional programming techniques. Language Integrated Query (LINQ) syntax creates a common pattern for working with data from any source. Language support for asynchronous operations provides syntax for building distributed systems. C# has a unified type system. All C# types, including primitive types such as int and double, inherit from a single root object type. All types share a set of common operations. Values of any type can be stored, transported, and operated upon in a consistent manner. Furthermore, C# supports both user-defined reference types and value types. C# allows dynamic allocation of objects and in-line storage of lightweight structures. C# supports generic methods and types, which provide increased type safety and performance. C# provides iterators, which enable implementers of collection classes to define custom behaviors for client code.<br><br></b>
+        </p>
+        <iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/CsCons" frameborder="0"></iframe>
+
+</div>
+    </body>
+</html>

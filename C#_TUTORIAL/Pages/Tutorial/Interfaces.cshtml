@@ -1,0 +1,83 @@
+@page
+@model Interfaces
+@{
+    ViewData["Title"] = "Interfaces";
+}
+<html>
+    <head>
+        <title>c# tutorial</title>
+        <link rel="stylesheet" href="~/css/Style.css" />
+        <script>
+            const Serach_Menu = () =>{
+                let filter = document.getElementById('Search').value.toUpperCase();
+                let ul = document.getElementById('Search_ul');
+                let li = ul.getElementsByTagName('li');
+                for(var i=0;i<li.length;i++)
+                {
+                    let a = li[i].getElementsByTagName('a')[0];
+                    let txtvalue = a.textContent || a.innerHTML;
+                    if(txtvalue.toUpperCase().indexOf(filter) > -1)
+                    {
+                        li[i].style.display = '';
+                    }
+                    else
+                    {
+                        li[i].style.display = 'none';
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="Sidebar">
+            <div class="Search">
+            <input type="text" class="SearchBar"placeholder="Type Here For Search" id="Search" onkeyup="Serach_Menu()">
+            </div>
+            <div class="side_Scroll">
+            <ul id="Search_ul">
+                <li><a  href="~/Tutorial/Introduction"><i></i>Introduction</a></li>
+                <li><a  href="~/Tutorial/Top_Level_Stat"><i></i>Top&nbsp;Level&nbsp;Statement</a></li>
+                <li><a  href="~/Tutorial/Namespaces"><i></i>Namespaces</a></li>
+                <li><a  href="~/Tutorial/Classes"><i></i>Classes</a></li>
+                <li><a  href="~/Tutorial/Records"><i></i>Records</a></li>
+                <li><a  href="~/Tutorial/Interfaces"><i></i>Interfaces</a></li>
+                <li><a  href="~/Tutorial/Generic"><i></i>Generic</a></li>
+                <li><a  href="~/Tutorial/Anonymous"><i></i>Anonymous</a></li>
+                <li><a  href="~/Tutorial/Class_Struct_Record"><i></i>Classes&nbsp;Structs&nbsp;Records</a></li>
+                <li><a  href="~/Tutorial/Objects"><i></i>Objects</a></li>
+                <li><a  href="~/Tutorial/Inheritance"><i></i>Inheritance</a></li>
+                <li><a  href="~/Tutorial/Polymorphism"><i></i>Polymorphism</a></li>
+                <li><a  href="~/Tutorial/Pattern_Matching"><i></i>Pattern Matching</a></li>
+                <li><a  href="~/Tutorial/Discards"><i></i>Discards</a></li>
+                <li><a  href="~/Tutorial/Exception_Over"><i></i>Exception Overview</a></li>
+                <li><a  href="~/Tutorial/Exception_Use"><i></i>Use Exception</a></li>
+              <li><a  href="~/Tutorial/Exception_Create_Throw">Creating&nbsp;&&nbsp;Throwing&nbsp;Exception</a></li>
+                <li><a  href="~/Tutorial/Exception_Compiler">Compiler&nbsp;generated&nbsp;Exceptions</a></li><br>
+            </ul>
+            </div>
+        </div>
+        <div class="Content">
+        <p class="padding">
+        <h2>
+               Interfaces - define behavior for multiple types
+        </h2>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; An interface contains definitions for a group of related functionalities that a non-abstract class or a struct must implement. An interface may define static methods, which must have an implementation. Beginning with C# 8.0, an interface may define a default implementation for members. An interface may not declare instance data such as fields, auto-implemented properties, or property-like events.<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By using interfaces, you can, for example, include behavior from multiple sources in a class. That capability is important in C# because the language doesn't support multiple inheritance of classes. In addition, you must use an interface if you want to simulate inheritance for structs, because they can't actually inherit from another struct or class.<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You define an interface by using the interface keyword as the following example shows.<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interface IEquatable<T><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool Equals(T obj);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The name of an interface must be a valid C# identifier name. By convention, interface names begin with a capital I.<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Any class or struct that implements the IEquatable<T> interface must contain a definition for an Equals method that matches the signature that the interface specifies. As a result, you can count on a class that implements IEquatable<T> to contain an Equals method with which an instance of the class can determine whether it's equal to another instance of the same class.<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The definition of IEquatable<T> doesn't provide an implementation for Equals. A class or struct can implement multiple interfaces, but a class can only inherit from a single class.<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Interfaces can contain instance methods, properties, events, indexers, or any combination of those four member types. Interfaces may contain static constructors, fields, constants, or operators. Beginning with C# 11, interface members that aren't fields may be static abstract. An interface can't contain instance fields, instance constructors, or finalizers. Interface members are public by default, and you can explicitly specify accessibility modifiers, such as public, protected, internal, private, protected internal, or private protected. A private member must have a default implementation.<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A class or struct that implements an interface must provide an implementation for all declared members without a default implementation provide by the interface. However, if a base class implements an interface, any class that's derived from the base class inherits that implementation.<br><br>
+            <h2>
+                Example
+            </h2>
+            <iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/qTMsG4" frameborder="0"></iframe>
+        </p>
+</div>
+    </body>
+</html>

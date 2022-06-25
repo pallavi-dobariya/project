@@ -1,0 +1,90 @@
+@page
+@model Login
+@{
+    ViewData["Title"] = "Login";
+}
+<html>
+    <head>
+        <title>c# tutorial</title>
+        <link rel="stylesheet" href="~/css/Style.css" />
+        <script>
+            const Serach_Menu = () =>{
+                let filter = document.getElementById('Search').value.toUpperCase();
+                let ul = document.getElementById('Search_ul');
+                let li = ul.getElementsByTagName('li');
+                for(var i=0;i<li.length;i++)
+                {
+                    let a = li[i].getElementsByTagName('a')[0];
+                    let txtvalue = a.textContent || a.innerHTML;
+                    if(txtvalue.toUpperCase().indexOf(filter) > -1)
+                    {
+                        li[i].style.display = '';
+                    }
+                    else
+                    {
+                        li[i].style.display = 'none';
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="Sidebar">
+            <div class="Search">
+            <input type="text" class="SearchBar"placeholder="Type Here For Search" id="Search" onkeyup="Serach_Menu()">
+            </div>
+            <div class="side_Scroll">
+            <ul id="Search_ul">
+                <li><a  href="~/Tutorial/Introduction"><i></i>Introduction</a></li>
+                <li><a  href="~/Tutorial/Top_Level_Stat"><i></i>Top&nbsp;Level&nbsp;Statement</a></li>
+                <li><a  href="~/Tutorial/Namespaces">Namespaces</a></li>
+                <li><a  href="~/Tutorial/Classes">Classes</a></li>
+                <li><a  href="~/Tutorial/Records"><i>Records</a></li>
+                <li><a  href="~/Tutorial/Interfaces">Interfaces</a></li>
+                <li><a  href="~/Tutorial/Generic">Generic</a></li>
+                <li><a  href="~/Tutorial/Anonymous">Anonymous</a></li>
+                <li><a  href="~/Tutorial/Class_Struct_Record">Classes&nbsp;Structs&nbsp;Records</a></li>
+                <li><a  href="~/Tutorial/Objects">Objects</a></li>
+                <li><a  href="~/Tutorial/Inheritance">Inheritance</a></li>
+                <li><a  href="~/Tutorial/Polymorphism">Polymorphism</a></li>
+                <li><a  href="~/Tutorial/Pattern_Matching">Pattern Matching</a></li>
+                <li><a  href="~/Tutorial/Discards">Discards</a></li>
+                <li><a  href="~/Tutorial/Exception_Over">Exception Overview</a></li>
+                <li><a  href="~/Tutorial/Exception_Use">Use Exception</a></li>
+                 <li><a  href="~/Tutorial/Exception_Create_Throw">Creating&nbsp;&&nbsp;Throwing&nbsp;Exception</a></li>
+                <li><a  href="~/Tutorial/Exception_Compiler">Compiler&nbsp;generated&nbsp;Exceptions</a></li><br>
+            </ul>
+            </div>
+        </div>
+        <div class="Content">
+     
+            <form id="login"  class="login_table" method="post">   
+                 <table>  
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    <label><b><h1>Login</h1></b></label><br><br>
+                <tr>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    <label><b>User Name</b></label>&nbsp;&nbsp;     
+                    <input type="text" name="Uname" id="txtbox" >
+                </tr>  
+                <br><br>
+                <tr>    
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    <label><b>Password</b></label> &nbsp;&nbsp;&nbsp;  
+                    <input type="Password" name="Pass" id="txtbox" >  
+                </tr>
+            
+                <tr><td colspan="2" align="center">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="submit" name="sub" id="button" value="Login" asp-page-handler="Submit">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                    <input type="reset" name="res" id="button" value="Cancel"> </td>
+                </tr>
+                <br>
+                </table><br>
+                <center><tr><a href="~/Tutorial/Registration">Create New Account</a></tr></center>
+            </form>
+    </div>
+    </body>
+</html>
+
